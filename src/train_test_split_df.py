@@ -8,7 +8,7 @@ def train_test_split_df(df):
 
     for index, row in df.iterrows():    
 
-        if df['session_position'][index] <= df['session_length'][index]*.7:
+        if df['session_position'][index] <= df['session_length'][index]*.75:
             Train.append(row)
         else:
             Test.append(row)
@@ -17,3 +17,4 @@ def train_test_split_df(df):
     Test = pandas.DataFrame(Test)
 
     return Train, Test
+
