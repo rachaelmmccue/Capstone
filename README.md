@@ -31,11 +31,11 @@ Author: Rachael McCue
 
 ## Business Understanding & Data Overview
 
-The goal of this analysis is to better understand the Spotify user base, outside of our primary concept -- playlist curation. This project focuses on user skipping behaviors. This analysis can be used in conjunction with genre based analyses for content creators, and it can also give insight to our partnerships team for ad placements. At the end of the day, we want users to feel that their Spotify expereince is curated for them. Skipping less may contribute to their overall happiness while using the app. On the contrary, a skip is not always negative, Spotify gives users empowerment to create their own experience and skipping a track is part of that empowerment. 
+The goal of this analysis is to better understand the Spotify user base, outside of Spotify's primary concept -- playlist curation. This project focuses on user skipping behaviors. This analysis can be used in conjunction with genre based analyses for content creators, and it can also give insight to our partnerships team for ad placements. At the end of the day, we want users to feel that their Spotify experience is curated for them. Skipping less may contribute to their overall happiness while using the app. On the contrary, a skip is not always negative, Spotify gives users empowerment to create their own experience and skipping a track is part of that empowerment. 
 
 Lets review whats in the data...
 
-The original data was delivered in 2 CSVs. One CSV contained the listening sessions. The listening sessions were based on a unique `session_id` and varied between 10-20 instances. This dataset contained information such as the following:
+The original data was delivered in 2 CSVs. One CSV contained the listening sessions. The listening sessions were based on a unique `session_id` and varied between 10-20 instances. There are about 7,500 listening sessions (about 150,000 total instances). This dataset contained information such as the following:
 
 - Is the user on shuffle?
 - Premium or Free user
@@ -45,7 +45,7 @@ The original data was delivered in 2 CSVs. One CSV contained the listening sessi
 - Track ID
 - <b>Target: skipped within 30 seconds of playing</b>
 
-The second CSV contained the musical elements. The music elements did not contain any genre based information, rather acoustic vectors and elements of a song that convey its energy or feeling like the following:
+The second CSV contained the musical elements for about 50,000 total tracks. The music elements did not contain any genre based information, rather acoustic vectors and elements of a song that convey its energy or feeling like the following:
 
 - Acousticness
 - Valence
@@ -55,16 +55,16 @@ The second CSV contained the musical elements. The music elements did not contai
 - Instrumentalness, and more
 
 
-I would like to address some data limitations as well. In order to complete this project using my personal computer, I used the mini versions of the original dataset. The original dataset contains 130 million listening sessions, the mini contains 50k. That being said, the mini is big enough for this academic project, but it came with some downfalls. For instance, there is a `date` column and I found that 70% of the mini dataset was accrued from Sunday, July 15, 2018. This is pretty biased! I think day of the week would be important for skipping behavior. Consider the models for their architechure -- as they would perform differently (likely better) on the orignal dataset. 
+I would like to address some data limitations as well. In order to complete this project using my personal computer, I used the mini versions of the original dataset. The original dataset contains closer to 130 million instances. That being said, the mini is big enough for this academic project, but it came with some downfalls. For instance, there is a `date` column and I found that 70% of the mini dataset was accrued from Sunday, July 15, 2018. This is pretty biased! I think day of the week would be important for skipping behavior. Consider the models for their architechure -- as they would perform differently (likely better) on the orignal dataset. 
 
 
 *****************
 
 ## Data Analysis
 
-Users skipping rate based on their type of plan. For context, Premium users have an ad-free experience. Free users receive 30 second ads about every 15 minutes. -- or 2-3 minutes of ads an hour. Surprisingly, I didnt see much of a different in their skip rates. Potentially some of the listening sessions were in the free 30 minutes of ad free listening. 
+Outside of musical features, I wanted to explore the behavioral and environmental features that contribute to skipping for the general population. For context, Premium users have an ad-free experience. Free users receive 30 second ads about every 15 minutes. -- or 2-3 minutes of ads an hour. Surprisingly, I didnt see much of a different in their skip rates. 
 
-| Plan | Skip Rate |
+| Account | Skip Rate |
 | ---- | ---- |
 | Premium | 51% |
 | Free | 53% |
@@ -77,7 +77,7 @@ The context type will effect skipping behavior as well. This aligns with our nat
 
 <p align="center"><img src="img/context_type.png" width=60% height=60% alt="bar chart context type"></p>
 
-Below is the average skip rate depending on hour of the day. The chart is in miltary hours, zo 0 is midnight and it ends at 23 which is 11pm. This chart shows a dip in the morning hours, and the skip rate increases as the evening approaches. 
+Below is the average skip rate depending on hour of the day. The chart is in miltary hours, so 0 is midnight and it ends at 23 which is 11pm. This chart shows a dip in the morning hours, and the skip rate increases as the evening approaches. 
 
 <p align="center"><img src="img/hour_of_day.png" width=60% height=60% alt="line chart hour of day"></p>
 
@@ -130,9 +130,11 @@ The model learned the sequential nature of the dataset, which the logistic regre
 There is a world of data related to Spotify only, and this project was an interesting take on a music based dataset that doesnt get explored too often. For the business case, ad placements can likely be increased in the morning hours or on personalized playlists and potentially decrease outside of those times. Learning what the user had recently skipped ot not skipped can help deliver more appropriate content that aligns with the users mood. From a technical lense, using a recurrent neural net with LSTM for a task it was not necessarily designed for was a fun task and will continue to be improved.
 
 
+********************
+
 ## Appendix: Clustering
 
-During my exploration, when I was exposed to all of the musical features available, I immediately thought that clustering labels from musical elements would help simplify some of the features. It is worth noting that each cluster would have contained songs from several and different music genres due to the cluster is not based on the genres attributes but it is based on the song audio attributes. I ran a KMeans clustering analysis, which is available in the [misc folder](misc/clustering_tracks.ipynb). 
+During my exploration, when I was exposed to all of the musical features available, I immediately thought that clustering labels from musical elements would help simplify some of the features and reduce dimensionality. It is worth noting that each cluster would have contained songs from several and different music genres due to the cluster is not based on the genres attributes but it is based on the song audio attributes. I ran a KMeans clustering analysis, which is available in the [misc folder](misc/clustering_tracks.ipynb). 
 
 However, there were a couple of factors that led me to removing this from my process. 
 
