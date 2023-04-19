@@ -1,4 +1,4 @@
-<p align="center"><img src="img/logo.png" alt="spotify logo"></p>
+<p align="center"><img src="img/logo.png" width=50% height=50% alt="spotify logo"></p>
 
 # Spotify Sequential Skip Prediction Challenge
 
@@ -69,21 +69,21 @@ Users skipping rate based on their type of plan. For context, Premium users have
 
 I explored if the position of their session effected the skip rates. I appears that there are slightly more skips later on in the session. 
 
-<p align="center"><img src="img/session_position.png" alt="line chart session position"></p>
+<p align="center"><img src="img/session_position.png" width=60% height=60% alt="line chart session position"></p>
 
 The context type will effect skipping behavior as well.
 
-<p align="center"><img src="img/context_type.png" alt="bar chart context type"></p>
+<p align="center"><img src="img/context_type.png" width=60% height=60% alt="bar chart context type"></p>
 
 Below is the average skip rate depending on hour of the day.
 
-<p align="center"><img src="img/hour_of_day.png" alt="line chart hour of day"></p>
+<p align="center"><img src="img/hour_of_day.png" width=60% height=60% alt="line chart hour of day"></p>
 
 *****************
 
 ## Modeling Process
 
-There were several modeling techniques used for this project. I will discuss the models and their respective pros and cons. The metric I used is <b>precision</b>, to reduce false positives (target is 1 for skipped, and 0 for not skipped.) The baseline, Logistic Regression, and Boosting models are only using the skip behavior features, and they disregard the music features. Music features are introduced in the neural net. Secondly, the foremost models ingore sequencing but it gives us a good idea of general user behaviors. 
+There were several modeling techniques used for this project. I will discuss the models and their respective pros and cons. The metric I used is <b>precision</b>, to reduce false positives (target is 1 for skipped, and 0 for not skipped.) The baseline, Logistic Regression, and Boosting models are only using the skip behavior features, and they disregard the music features. Music features are introduced in the neural net. Secondly, the foremost models ingore sequencing but it gives us a good idea of general user behaviors, where sequencing is introduced in the RNN as well. 
 
 #### Baseline
 
@@ -100,14 +100,16 @@ The baseline model was a combination of Decision Tree and Logistic Regression. I
 | Metric | Train Score | Test Score |
 | ---- | ---- | ---- |
 | Accuracy | 56% | 55% |
-| Precision | % | 55% |
+| Precision |  | 56% |
+| F1 |  | 61% |
 
 #### Gradient Boosting Classifier
 
 | Metric | Train Score | Test Score |
 | ---- | ---- | ---- |
-| Accuracy | % | % |
-| Precision | % | % |
+| Accuracy | 56% | 56% |
+| Precision |  | 56% |
+| F1 |  | 61% |
 
 #### Recurrent Neural Network
 
@@ -116,7 +118,11 @@ I explored using a neural network for this business case, due to the sequential 
 | Metric | Train Score | Test Score |
 | ---- | ---- | ---- |
 | Accuracy | % | % |
-| MAA | % | % |
+| Precision | % | % |
+| F1 |  | % |
+
+
+
 
 *****************
 
