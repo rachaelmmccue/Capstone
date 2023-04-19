@@ -1,4 +1,6 @@
 <p align="center"><img src="img/logo.png" width=50% height=50% alt="spotify logo"></p>
+<br>
+<br>
 
 # Spotify Sequential Skip Prediction Challenge
 
@@ -67,11 +69,11 @@ Users skipping rate based on their type of plan. For context, Premium users have
 | Premium | 51% |
 | Free | 53% |
 
-I explored if the position of their session effected the skip rates. I appears that there are slightly more skips later on in the session. 
+I explored if the position of their session effected the skip rates. Based on the chart below, you can see that there are fewer skips in the beginning of the session. This may be that the user wants to change their mood, or the longer they are listening may weigh in on wanting to skip.
 
 <p align="center"><img src="img/session_position.png" width=60% height=60% alt="line chart session position"></p>
 
-The context type will effect skipping behavior as well.
+The context type will effect skipping behavior as well. This aligns with our natural hypothesis that someone would skip less on a playlist that they created. The full description of the categories can be found [here]().
 
 <p align="center"><img src="img/context_type.png" width=60% height=60% alt="bar chart context type"></p>
 
@@ -117,10 +119,11 @@ I explored using a neural network for this business case, due to the sequential 
 
 | Metric | Train Score | Test Score |
 | ---- | ---- | ---- |
-| Accuracy | % | % |
-| Precision | % | % |
-| F1 |  | % |
+| Accuracy | 70% | 55% |
+| Precision | 72% | 58% |
+| F1 |  | 61% |
 
+The model learned the sequential nature of the dataset, which the logistic regression was unable to do. The precision score was 72% and 58% on train and test, respectively. We can consider this model slightly overfit, and may perform better once exposed to the original dataset and its noise. This model also included the musical features, which the other classifiers did not.
 
 
 
