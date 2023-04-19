@@ -73,11 +73,11 @@ I explored if the position of their session effected the skip rates. Based on th
 
 <p align="center"><img src="img/session_position.png" width=60% height=60% alt="line chart session position"></p>
 
-The context type will effect skipping behavior as well. This aligns with our natural hypothesis that someone would skip less on a playlist that they created. The full description of the categories can be found [here]().
+The context type will effect skipping behavior as well. This aligns with our natural hypothesis that someone would skip less on a playlist that they created. 
 
 <p align="center"><img src="img/context_type.png" width=60% height=60% alt="bar chart context type"></p>
 
-Below is the average skip rate depending on hour of the day.
+Below is the average skip rate depending on hour of the day. The chart is in miltary hours, zo 0 is midnight and it ends at 23 which is 11pm. This chart shows a dip in the morning hours, and the skip rate increases as the evening approaches. 
 
 <p align="center"><img src="img/hour_of_day.png" width=60% height=60% alt="line chart hour of day"></p>
 
@@ -85,7 +85,7 @@ Below is the average skip rate depending on hour of the day.
 
 ## Modeling Process
 
-There were several modeling techniques used for this project. I will discuss the models and their respective pros and cons. The metric I used is <b>precision</b>, to reduce false positives (target is 1 for skipped, and 0 for not skipped.) The baseline, Logistic Regression, and Boosting models are only using the skip behavior features, and they disregard the music features. Music features are introduced in the neural net. Secondly, the foremost models ingore sequencing but it gives us a good idea of general user behaviors, where sequencing is introduced in the RNN as well. 
+There were several modeling techniques used for this project. I will discuss the models and their respective pros and cons. I used accuracy, precision, and F1 as my metrics with a primary focus on <b>precision</b>, to reduce false positives (target is 1 for skipped, and 0 for not skipped.) The baseline, Logistic Regression, and Boosting models are only using the skip behavior features, and they disregard the music features. Music features are introduced in the neural net. Secondly, the foremost models ingore sequencing but it gives us a good idea of general user behaviors as a whole, where sequencing is introduced in the RNN as well. 
 
 #### Baseline
 
@@ -99,23 +99,19 @@ The baseline model was a combination of Decision Tree and Logistic Regression. I
 
 #### Tuned Logistic Regression
 
+The baseline was improved using GridSearch, scaling, SMOTE and limiting quantity of features. 
+
 | Metric | Train Score | Test Score |
 | ---- | ---- | ---- |
 | Accuracy | 56% | 55% |
 | Precision |  | 56% |
 | F1 |  | 61% |
 
-#### Gradient Boosting Classifier
-
-| Metric | Train Score | Test Score |
-| ---- | ---- | ---- |
-| Accuracy | 56% | 56% |
-| Precision |  | 56% |
-| F1 |  | 61% |
 
 #### Recurrent Neural Network
 
 I explored using a neural network for this business case, due to the sequential nature of the dataset. When we think of sequential data tasks, it typically applies to NLP or time series. I implemented an LSTM layer, long-short-term-memory, which helps the model recall long term information as well as the most recent instances to predict the following sequences. I was able incorporate most of the features in the cleaned dataset. The model evidently overfit likely due to the size of the dataset. 
+
 
 | Metric | Train Score | Test Score |
 | ---- | ---- | ---- |
@@ -123,10 +119,13 @@ I explored using a neural network for this business case, due to the sequential 
 | Precision | 72% | 58% |
 | F1 |  | 61% |
 
-The model learned the sequential nature of the dataset, which the logistic regression was unable to do. The precision score was 72% and 58% on train and test, respectively. We can consider this model slightly overfit, and may perform better once exposed to the original dataset and its noise. This model also included the musical features, which the other classifiers did not.
 
+The model learned the sequential nature of the dataset, which the logistic regression was unable to do. The precision score was 72% and 58% on train and test, respectively. We can consider this model slightly overfit, and may perform better once exposed to the original dataset and its noise. This model also included the musical features, which the other classifiers did not.
 
 
 *****************
 
 ## Conclusion
+
+There is a world of data related to Spotify only, and this project was an interesting take on a music based dataset that doesnt get explored too often. For the business case, ad placements can likely be increased in the morning hours or on personalized playlists and potentially decrease outside of those times. Learning what the user had recently skipped ot not skipped can help deliver more appropriate content that aligns with the users mood. From a technical lense, using a recurrent neural net with LSTM for a task it was not necessarily designed for was a fun task and will continue to be improved.
+
