@@ -129,3 +129,13 @@ The model learned the sequential nature of the dataset, which the logistic regre
 
 There is a world of data related to Spotify only, and this project was an interesting take on a music based dataset that doesnt get explored too often. For the business case, ad placements can likely be increased in the morning hours or on personalized playlists and potentially decrease outside of those times. Learning what the user had recently skipped ot not skipped can help deliver more appropriate content that aligns with the users mood. From a technical lense, using a recurrent neural net with LSTM for a task it was not necessarily designed for was a fun task and will continue to be improved.
 
+
+## Appendix: Clustering
+
+During my exploration, when I was exposed to all of the musical features available, I immediately thought that clustering labels from musical elements would help simplify some of the features. It is worth noting that each cluster would have contained songs from several and different music genres due to the cluster is not based on the genres attributes but it is based on the song audio attributes. I ran a KMeans clustering analysis, which is available in the [misc folder](misc/clustering_tracks.ipynb). 
+
+However, there were a couple of factors that led me to removing this from my process. 
+
+- The labels were not easily interprettable
+- The highest silouhette score was ~ 35%, I was hoping for slightly tighter clusters
+- The timeline of the project, I needed to pad myself with more time for modeling, and I risked expending too much time and energy onto clustering 
