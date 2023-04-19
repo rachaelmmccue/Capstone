@@ -127,7 +127,7 @@ The model learned the sequential nature of the dataset, which the logistic regre
 
 ## Conclusion
 
-There is a world of data related to Spotify only, and this project was an interesting take on a music based dataset that doesnt get explored too often. For the business case, ad placements can likely be increased in the morning hours or on personalized playlists and potentially decrease outside of those times. Learning what the user had recently skipped ot not skipped can help deliver more appropriate content that aligns with the users mood. From a technical lense, using a recurrent neural net with LSTM for a task it was not necessarily designed for was a fun task and will continue to be improved.
+There is a world of data related to Spotify only, and this project was an interesting take on a music based dataset that doesnt get explored too often. For the business case, ad placements can likely be increased in the morning hours or on personalized playlists and potentially decrease outside of those times. Learning what the user had recently skipped ot not skipped can help deliver more appropriate content that aligns with the users mood. From a technical lens, using a recurrent neural net with LSTM for a task it was not necessarily designed for was a fun challenge and it will continue to be improved.
 
 
 ********************
