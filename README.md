@@ -1,3 +1,5 @@
+<p align="center"><img src="img/logo.png" alt="spotify logo"></p>
+
 # Spotify Sequential Skip Prediction Challenge
 
 This project is a hypothetical presentation for Spotify exectives. This is an end-to-end walk through of my data exploration, analysis, and model building (pre-deployment) to analyze and predict a user skipping a track on Spotify, which I will cover in more detail below. 
@@ -12,7 +14,6 @@ Author: Rachael McCue
 
 | Folder | Description |
 | --- | --- |
-| src | source code |
 | data | data files |
 |  | track_features<br> tf_mini.csv : mini version of original dataset, contains track IDs and features |
 |  | training_set<br> log_mini.csv : mini version of original dataset, contains unique session IDs and skipping behavior |
@@ -20,6 +21,7 @@ Author: Rachael McCue
 |  | data_exploration<br> data analysis, cleaning, and exploration|
 |  | models<br> baseline model and tuned models |
 |  | rnn<br> recurrent neural network |
+|  | src<br> source code |
 | misc | miscellaneous materials used |
 |  | clustering<br> appendix: clustering technique for track information, that was discarded from the final modeling proces |
 
@@ -67,15 +69,15 @@ Users skipping rate based on their type of plan. For context, Premium users have
 
 I explored if the position of their session effected the skip rates. I appears that there are slightly more skips later on in the session. 
 
-PIC 
+<p align="center"><img src="img/session_position.png" alt="line chart session position"></p>
 
 The context type will effect skipping behavior as well.
 
-PIC or TABLE
+<p align="center"><img src="img/context_type.png" alt="bar chart context type"></p>
 
 Below is the average skip rate depending on hour of the day.
 
-PIC
+<p align="center"><img src="img/hour_of_day.png" alt="line chart hour of day"></p>
 
 *****************
 
@@ -89,15 +91,16 @@ The baseline model was a combination of Decision Tree and Logistic Regression. I
 
 | Metric | Train Score | Test Score |
 | ---- | ---- | ---- |
-| Accuracy | % | % |
-| Precision | % | % |
+| Accuracy | 58% | 53% |
+| Precision |  | 51% |
+| F1 |  | 51% |
 
 #### Tuned Logistic Regression
 
 | Metric | Train Score | Test Score |
 | ---- | ---- | ---- |
-| Accuracy | % | % |
-| Precision | % | % |
+| Accuracy | 56% | 55% |
+| Precision | % | 55% |
 
 #### Gradient Boosting Classifier
 
