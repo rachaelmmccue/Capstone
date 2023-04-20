@@ -19,9 +19,10 @@ Author: Rachael McCue
 | data | data files |
 |  | track_features<br> tf_mini.csv : mini version of original dataset, contains track IDs and features |
 |  | training_set<br> log_mini.csv : mini version of original dataset, contains unique session IDs and skipping behavior |
+|  | track_sessions_clean.csv : product of data_exploration.ipynb, used for modeling
 | notebooks | working notebooks |
 |  | data_exploration<br> data analysis, cleaning, and exploration|
-|  | models<br> baseline model and tuned models |
+|  | baseline_and_tuned<br> baseline model and tuned models |
 |  | rnn<br> recurrent neural network |
 |  | src<br> source code |
 | misc | miscellaneous materials used |
